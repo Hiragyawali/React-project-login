@@ -5,11 +5,16 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token,setToken]=useState(()=> localStorage.getItem("token"))
   
-  
+   useEffect(()=> {
+        const storedToken = localStorage.getItem("token")
+        const storedUser = localStorage.getItem("user")
 
+        if(storedToken && storedUser){
+            setToken(storedToken)
+            setUser(JSON.parse(storedUser))
+        }
+    }, [])
 
-  console.log(token, "This is token");
-  console.log(user, "This is user");
   useEffect(()=>{
     if (token && user){
         localStorage.setItem("token",token)
