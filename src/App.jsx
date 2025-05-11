@@ -3,15 +3,22 @@ import Registrationform from './pages/Registrationform';
 import Loginform from './pages/Loginform';
 import LandingPage from './pages/LandingPage';
 import ProtectedRoute from './components/ProtectedRoute';
-import Home from './pages/Home';
-import Navbar from './components/Navbar';
 import Dashboarad from './pages/Dashboarad';
+import BlogForm from './components/BlogForm';
 
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route
+          path="/create-blog"
+          element={
+            <ProtectedRoute>
+              <BlogForm/>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/blogs"
           element={

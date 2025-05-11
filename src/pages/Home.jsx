@@ -1,15 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
- 
   const fetchBlogs = async () => {
     try {
       const response = await axios.get("https://blog-hqx2.onrender.com/blog");
-      setBlogs(response.data); 
+      setBlogs(response.data);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching blogs:", error);
@@ -18,13 +18,22 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchBlogs(); 
+    fetchBlogs();
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-semibold text-gray-800 mb-6">Blog Posts</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-semibold text-gray-800">Blog Posts</h1>
+          <Link to="/create-blog">
+            <button 
+              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
+            >
+              Create Blog
+            </button>
+          </Link>
+        </div>
         {loading ? (
           <div className="text-center text-xl text-gray-500">Loading blogs...</div>
         ) : (
