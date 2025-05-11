@@ -7,18 +7,20 @@ import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import Dashboarad from './pages/Dashboarad';
 
+
 function App() {
   return (
-     <Router>
+    <Router>
       <Routes>
         <Route
           path="/blogs"
           element={
             <ProtectedRoute>
-              <Dashboarad/>
+              <Dashboarad />
             </ProtectedRoute>
           }
         />
+       
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Loginform />} />
         <Route path="/register" element={<Registrationform />} />
